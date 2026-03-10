@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-brand-primary: #23b0d9;
+  --color-brand-dark: #000000;
+  --color-brand-deep: #075985;
+  --color-brand-light: #f0f9ff;
+  --color-brand-bg: #ffffff;
+  --color-brand-text: #000000;
+  --color-brand-muted: #1a1a1a;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-bg text-brand-text font-sans antialiased overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight text-brand-text;
+  }
+}
+
+.glass-card {
+  @apply bg-white/95 backdrop-blur-md border border-slate-200 rounded-2xl shadow-sm overflow-hidden;
+}
+
+.btn-primary {
+  @apply bg-brand-primary text-white px-6 py-3 rounded-xl font-bold transition-all hover:bg-brand-deep hover:shadow-lg active:scale-95 flex items-center justify-center gap-2;
+}
+
+.btn-outline {
+  @apply border-2 border-brand-primary text-brand-primary px-6 py-3 rounded-xl font-bold transition-all hover:bg-brand-primary hover:text-white active:scale-95 flex items-center justify-center gap-2;
+}
+
+.tech-label {
+  @apply font-mono text-[10px] uppercase tracking-widest text-brand-text;
+}
+
+.section-padding {
+  @apply py-16 md:py-24 px-6;
+}
