@@ -4,44 +4,65 @@ import { Brain, Target, Zap, Shield, ArrowRight, CheckCircle2 } from 'lucide-rea
 
 export function Metodologia() {
   return (
-    <div className="pt-32 pb-20 bg-brand-bg">
+    <div className="pt-32 pb-20 bg-transparent">
       <Helmet>
         <title>Metodología | JP Preparation</title>
         <meta name="description" content="Descubre el método de JP Preparation: Percepción, Toma de Decisiones y Ejecución. Formación integral para el futbolista moderno." />
       </Helmet>
 
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20 space-y-4">
-          <h1 className="text-4xl md:text-7xl font-display font-black uppercase text-brand-dark">NUESTRA METODOLOGÍA</h1>
-          <p className="text-brand-text max-w-2xl mx-auto text-lg md:text-xl">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-12 sm:mb-20 space-y-4"
+        >
+          <h1 className="text-3xl sm:text-4xl md:text-7xl font-display font-black uppercase text-brand-dark">NUESTRA METODOLOGÍA</h1>
+          <p className="text-brand-text max-w-2xl mx-auto text-base sm:text-lg md:text-xl">
             No solo entrenamos el cuerpo, entrenamos la mente del futbolista para dominar el juego moderno.
           </p>
-        </div>
+        </motion.div>
 
         {/* Filosofía Section */}
-        <section className="mb-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-display font-black uppercase text-brand-dark">FILOSOFÍA DE ENTRENAMIENTO</h2>
-            <p className="text-brand-text leading-relaxed text-lg">
+        <section className="mb-20 sm:mb-32 grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-black uppercase text-brand-dark">FILOSOFÍA DE ENTRENAMIENTO</h2>
+            <p className="text-brand-text leading-relaxed text-base sm:text-lg">
               En JP Preparation entendemos el fútbol como un juego de toma de decisiones constante. Nuestra filosofía se aleja del entrenamiento analítico tradicional para sumergir al jugador en contextos reales de juego donde debe resolver problemas bajo presión.
             </p>
-            <p className="text-brand-text leading-relaxed">
+            <p className="text-brand-text leading-relaxed text-sm sm:text-base">
               Buscamos crear jugadores autónomos, creativos y con una técnica depurada que sepan aplicar en el momento justo y con la intensidad necesaria.
             </p>
-          </div>
-          <div className="relative">
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
             <img
               src="https://images.unsplash.com/photo-1526232762683-21750f0c7396?auto=format&fit=crop&q=80&w=800"
               alt="Filosofía de entrenamiento"
-              className="rounded-3xl shadow-2xl"
+              className="rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl"
               referrerPolicy="no-referrer"
             />
-          </div>
+          </motion.div>
         </section>
 
         {/* Pilares Section */}
-        <section className="mb-32">
-          <h2 className="text-3xl md:text-4xl font-display font-black uppercase text-center mb-16 text-brand-dark">LOS 3 PILARES DEL ÉXITO</h2>
+        <section className="mb-20 sm:mb-32">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-2xl sm:text-3xl md:text-4xl font-display font-black uppercase text-center mb-12 sm:mb-16 text-brand-dark"
+          >
+            LOS 3 PILARES DEL ÉXITO
+          </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
@@ -67,22 +88,30 @@ export function Metodologia() {
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-card p-10 text-center space-y-6"
+                className="glass-card p-8 sm:p-10 text-center space-y-6"
               >
-                <div className={`w-16 h-16 bg-brand-light rounded-2xl flex items-center justify-center mx-auto ${pilar.color}`}>
+                <div className={`w-14 h-14 sm:w-16 sm:h-16 bg-brand-light rounded-2xl flex items-center justify-center mx-auto ${pilar.color}`}>
                   <pilar.icon size={32} />
                 </div>
-                <h3 className="text-2xl font-display font-black text-brand-dark">{pilar.title}</h3>
-                <p className="text-brand-text leading-relaxed">{pilar.desc}</p>
+                <h3 className="text-xl sm:text-2xl font-display font-black text-brand-dark">{pilar.title}</h3>
+                <p className="text-brand-text text-sm sm:text-base leading-relaxed">{pilar.desc}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
         {/* Áreas de Trabajo */}
-        <section className="mb-32">
-          <h2 className="text-3xl md:text-4xl font-display font-black uppercase text-center mb-16 text-brand-dark">DESARROLLO INTEGRAL</h2>
+        <section className="mb-20 sm:mb-32">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-2xl sm:text-3xl md:text-4xl font-display font-black uppercase text-center mb-12 sm:mb-16 text-brand-dark"
+          >
+            DESARROLLO INTEGRAL
+          </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               { title: 'TÉCNICA', items: ['Control orientado', 'Pase precisión', 'Regate 1vs1', 'Golpeo de balón'] },
@@ -90,25 +119,37 @@ export function Metodologia() {
               { title: 'FÍSICA', items: ['Velocidad reacción', 'Coordinación motriz', 'Fuerza explosiva', 'Prevención lesiones'] },
               { title: 'MENTAL', items: ['Confianza', 'Concentración', 'Gestión del error', 'Liderazgo'] },
             ].map((area, i) => (
-              <div key={i} className="glass-card p-8">
-                <h3 className="text-xl font-display font-black mb-6 text-brand-primary">{area.title}</h3>
-                <ul className="grid grid-cols-2 gap-4">
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="glass-card p-6 sm:p-8"
+              >
+                <h3 className="text-lg sm:text-xl font-display font-black mb-6 text-brand-primary">{area.title}</h3>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   {area.items.map((item, j) => (
-                    <li key={j} className="flex items-center gap-2 text-brand-text">
+                    <li key={j} className="flex items-center gap-2 text-brand-text text-sm sm:text-base">
                       <CheckCircle2 size={16} className="text-brand-primary shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             ))}
           </div>
         </section>
 
         {/* CTA */}
-        <div className="text-center">
-          <button className="btn-primary text-lg px-12">Empieza a entrenar con nosotros</button>
-        </div>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <button className="btn-primary text-base sm:text-lg px-8 sm:px-12 justify-center">Empieza a entrenar con nosotros</button>
+        </motion.div>
       </div>
     </div>
   );

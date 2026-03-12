@@ -66,7 +66,7 @@ export function Galeria() {
     : galleryItems.filter(item => item.category === filter);
 
   return (
-    <div className="pt-32 pb-20 bg-brand-bg">
+    <div className="pt-32 pb-20 bg-transparent">
       <Helmet>
         <title>Galería e Instalaciones | JP Preparation</title>
         <meta name="description" content="Explora nuestras instalaciones de élite y revive los mejores momentos de nuestros entrenamientos y campus." />
@@ -74,26 +74,31 @@ export function Galeria() {
 
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="max-w-3xl mb-20 space-y-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-3xl mb-12 sm:mb-20 space-y-4 sm:space-y-6"
+        >
           <div className="tech-label text-brand-primary">Visual Experience</div>
-          <h1 className="text-4xl md:text-7xl font-display font-black uppercase leading-none text-brand-dark">
+          <h1 className="text-3xl sm:text-4xl md:text-7xl font-display font-black uppercase leading-none text-brand-dark">
             GALERÍA E <br /> <span className="text-brand-primary">INSTALACIONES</span>
           </h1>
-          <p className="text-brand-text text-lg md:text-xl leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-brand-text leading-relaxed">
             Descubre el entorno donde forjamos a los futbolistas del mañana. Instalaciones de primer nivel para un rendimiento superior.
           </p>
-        </div>
+        </motion.div>
 
         {/* Facilities Section */}
-        <section className="mb-40">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <section className="mb-20 sm:mb-40">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             {facilities.map((fac, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-xl"
+                transition={{ delay: i * 0.1 }}
+                className="group glass-card relative overflow-hidden shadow-xl"
               >
                 <div className="aspect-video overflow-hidden">
                   <img 
@@ -103,12 +108,12 @@ export function Galeria() {
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <div className="p-8 space-y-4">
-                  <div className="w-12 h-12 bg-brand-light rounded-xl flex items-center justify-center text-brand-primary">
-                    <fac.icon size={24} />
+                <div className="p-6 sm:p-8 space-y-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-brand-light rounded-xl flex items-center justify-center text-brand-primary">
+                    <fac.icon size={20} className="sm:w-6 sm:h-6" />
                   </div>
-                  <h3 className="text-2xl font-display font-black uppercase text-brand-dark">{fac.title}</h3>
-                  <p className="text-brand-text leading-relaxed">{fac.desc}</p>
+                  <h3 className="text-xl sm:text-2xl font-display font-black uppercase text-brand-dark">{fac.title}</h3>
+                  <p className="text-sm sm:text-base text-brand-text leading-relaxed">{fac.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -117,38 +122,49 @@ export function Galeria() {
 
         {/* Gallery Section */}
         <section>
-          <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-12">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-display font-black uppercase text-brand-dark">MOMENTOS JP</h2>
-              <p className="text-brand-text">Capturando la esencia del alto rendimiento.</p>
-            </div>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 sm:gap-8 mb-8 sm:mb-12">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-2"
+            >
+              <h2 className="text-2xl sm:text-3xl font-display font-black uppercase text-brand-dark">MOMENTOS JP</h2>
+              <p className="text-sm sm:text-base text-brand-text">Capturando la esencia del alto rendimiento.</p>
+            </motion.div>
             
-            <div className="flex flex-wrap gap-2">
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-wrap gap-2"
+            >
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setFilter(cat)}
-                  className={`px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all border ${
+                  className={`px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all border ${
                     filter === cat 
                       ? 'bg-brand-primary text-white border-brand-primary shadow-lg shadow-brand-primary/30' 
-                      : 'bg-white text-brand-muted border-slate-200 hover:border-brand-primary hover:text-brand-primary'
+                      : 'bg-white/50 backdrop-blur-sm text-brand-muted border-white/40 hover:border-brand-primary hover:text-brand-primary'
                   }`}
                 >
                   {cat}
                 </button>
               ))}
-            </div>
+            </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filteredItems.map((item, i) => (
               <motion.div
                 key={i}
                 layout
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="group relative aspect-square overflow-hidden rounded-3xl cursor-pointer shadow-md"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4 }}
+                className="group relative aspect-square overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] cursor-pointer shadow-lg"
               >
                 <img 
                   src={item.url} 
@@ -156,12 +172,12 @@ export function Galeria() {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                  <span className="tech-label text-brand-primary mb-2">{item.category}</span>
-                  <h4 className="text-white font-display font-bold text-xl uppercase">{item.title}</h4>
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-dark/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 sm:p-8">
+                  <span className="tech-label text-brand-primary mb-1 sm:mb-2 text-[10px] sm:text-xs">{item.category}</span>
+                  <h4 className="text-white font-display font-bold text-lg sm:text-xl uppercase">{item.title}</h4>
                 </div>
-                <div className="absolute top-6 right-6 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Maximize2 size={20} />
+                <div className="absolute top-4 right-4 sm:top-6 sm:right-6 w-8 h-8 sm:w-10 sm:h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                  <Maximize2 size={16} className="sm:w-5 sm:h-5" />
                 </div>
               </motion.div>
             ))}
@@ -169,22 +185,33 @@ export function Galeria() {
         </section>
 
         {/* CTA Section */}
-        <section className="mt-40 bg-brand-primary rounded-[3rem] p-12 md:p-20 text-center text-white relative overflow-hidden">
+        <motion.section 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-20 sm:mt-40 bg-brand-primary rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl shadow-brand-primary/30"
+        >
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
-          <div className="relative z-10 space-y-8 max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-6xl font-display font-black uppercase leading-tight">
+          <motion.div 
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="relative z-10 space-y-6 sm:space-y-8 max-w-2xl mx-auto"
+          >
+            <h2 className="text-2xl sm:text-3xl md:text-6xl font-display font-black uppercase leading-tight">
               ¿QUIERES VERLO <br /> EN PERSONA?
             </h2>
-            <p className="text-white text-lg md:text-xl">
+            <p className="text-white text-base sm:text-lg md:text-xl">
               Ven a una sesión de prueba gratuita y conoce nuestras instalaciones de primera mano.
             </p>
-            <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <a href="/contacto" className="bg-white text-brand-primary px-10 py-4 rounded-xl font-display font-black uppercase hover:bg-brand-dark hover:text-white transition-all shadow-xl">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/contacto" className="bg-white text-brand-primary px-8 sm:px-10 py-3 sm:py-4 rounded-xl font-display font-black uppercase hover:bg-brand-dark hover:text-white transition-all shadow-xl active:scale-95 text-sm sm:text-base">
                 RESERVAR PRUEBA
               </a>
             </div>
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
       </div>
     </div>
   );

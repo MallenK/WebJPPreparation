@@ -3,11 +3,12 @@ import { Instagram, Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react'
 
 export function Footer() {
   return (
-    <footer className="bg-slate-50 border-t border-slate-200 pt-20 pb-10 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="bg-white/40 backdrop-blur-md border-t border-white/20 pt-20 pb-10 px-6 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-full bg-brand-primary/5 -z-10" />
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
         <div className="space-y-6">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center font-display font-extrabold text-white text-xl shadow-sm">
+            <div className="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center font-display font-extrabold text-white text-xl shadow-lg shadow-brand-primary/20">
               JP
             </div>
             <span className="font-display font-extrabold text-xl tracking-tighter text-brand-dark">
@@ -18,15 +19,11 @@ export function Footer() {
             Academia de tecnificación de fútbol de alto rendimiento. Formamos a los jugadores del futuro con metodología profesional y valores deportivos.
           </p>
           <div className="flex gap-4">
-            <a href="#" className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-brand-dark hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all shadow-sm">
-              <Instagram size={20} />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-brand-dark hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all shadow-sm">
-              <Facebook size={20} />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-brand-dark hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all shadow-sm">
-              <Twitter size={20} />
-            </a>
+            {[Instagram, Facebook, Twitter].map((Icon, i) => (
+              <a key={i} href="#" className="w-10 h-10 rounded-xl bg-white/50 backdrop-blur-sm border border-white/40 flex items-center justify-center text-brand-dark hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all shadow-sm hover:-translate-y-1">
+                <Icon size={20} />
+              </a>
+            ))}
           </div>
         </div>
 

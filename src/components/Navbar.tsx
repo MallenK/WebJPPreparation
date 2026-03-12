@@ -38,17 +38,17 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4',
-        scrolled ? 'bg-white/90 backdrop-blur-md border-b border-slate-200 py-3 shadow-sm' : 'bg-transparent'
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-4',
+        scrolled ? 'bg-white/70 backdrop-blur-xl border-b border-white/20 py-3 shadow-lg' : 'bg-transparent'
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center font-display font-extrabold text-white text-xl group-hover:rotate-6 transition-transform shadow-sm">
+          <div className="w-10 h-10 bg-brand-primary rounded-xl flex items-center justify-center font-display font-extrabold text-white text-xl group-hover:rotate-6 transition-transform shadow-lg shadow-brand-primary/20">
             JP
           </div>
           <span className={cn(
-            "font-display font-extrabold text-xl tracking-tighter hidden sm:block",
+            "font-display font-extrabold text-xl tracking-tighter hidden sm:block transition-colors duration-300",
             scrolled || location.pathname !== '/' ? 'text-brand-dark' : 'text-white'
           )}>
             PREPARATION
@@ -62,16 +62,20 @@ export function Navbar() {
               key={link.path}
               to={link.path}
               className={cn(
-                'text-sm font-semibold transition-colors hover:text-brand-primary',
+                'text-sm font-bold transition-all duration-300 hover:text-brand-primary relative group/link',
                 location.pathname === link.path 
                   ? 'text-brand-primary' 
                   : (scrolled || location.pathname !== '/' ? 'text-brand-text' : 'text-white')
               )}
             >
               {link.name}
+              <span className={cn(
+                "absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-primary transition-all duration-300 group-hover/link:w-full",
+                location.pathname === link.path && "w-full"
+              )} />
             </Link>
           ))}
-          <Link to="/contacto" className="btn-primary py-2 px-5 text-sm rounded-lg">
+          <Link to="/contacto" className="btn-primary py-2 px-6 text-sm rounded-xl shadow-lg shadow-brand-primary/20 hover:scale-105 active:scale-95 transition-all">
             Únete
           </Link>
         </div>
